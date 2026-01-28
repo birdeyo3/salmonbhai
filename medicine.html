@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salmon Dose Calculator 💊</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d0f0c0 0%, #c0f0f5 100%);
+      color: #0b1220;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    h1 { color: #27d07d; }
+    label { display:block; margin: 10px 0 4px; }
+    input, select, button { padding:8px; margin-bottom:12px; border-radius:8px; border:2px solid #27d07d; }
+    button { background:#27d07d; color:white; cursor:pointer; }
+    button:hover { background:#1fa65b; }
+    .result-box { margin-top:20px; padding:12px; border:2px solid #27d07d; border-radius:12px; background: #e7ffe7; }
+    small { color:#555; }
+    footer { margin-top:40px; text-align:center; font-size:0.9em; color:#0b1220; }
+    footer a { color:#27d07d; text-decoration:none; margin:0 6px; }
+  </style>
+</head>
+<body>
+
+<h1>Salmon Dose Calculator 💊</h1>
+<p>!!IF U BROKE SALMON BHAI USING FORK, TRY OUT THIS CALCULATOR!!</p>
+
+<label for="triveni">Child’s Weight (kg)</label>
+<input type="number" id="triveni" placeholder="Eg: 25">
+
+<label for="simha">Child’s Age (years)</label>
+<input type="number" id="simha" placeholder="Eg: 5">
+
+<label for="nanapala">Type of Medicine</label>
+<select id="nanapala">
+  <option value="pain">Pain Reliever</option>
+  <option value="antibiotic">Antibiotic</option>
+  <option value="heart">Immunity Booster</option>
+  <option value="asthma">Vitamins</option>
+</select>
+
+<label for="sooorya">Unit</label>
+<select id="sooorya">
+  <option value="mg">mg</option>
+  <option value="ml">ml</option>
+</select>
+
+<label for="form">Form of Medicine</label>
+<select id="form">
+  <option value="tablet">Tablet</option>
+  <option value="tonic">Tonic</option>
+</select>
+
+<label>Kidney Condition (Saleena)</label>
+<select id="saleena">
+  <option value="1">Normal</option>
+  <option value="0.8">Has Issues</option>
+</select>
+
+<label>Liver Condition (Poornima)</label>
+<select id="poornima">
+  <option value="1">Normal</option>
+  <option value="0.8">Has issues</option>
+</select>
+
+<button onclick="calculateDose()">Calculate Dose</button>
+
+<div class="result-box" id="ramya">
+  The Dose Will be Here Soon!
+</div>
+
+<footer>
+   These Website Is Cool: 
+   <a href="https://cdn.mtdv.me/video/rick.mp4" target="_blank">X</a> | 
+   <a href="https://cdn.mtdv.me/video/rick.mp4" target="_blank">Instagram</a> | 
+   <a href="https:cdn.mtdv.me/video/rick.mp4" target="_blank">YouTube</a>
+   <br>
+   &copy; 2026 Salmon Productions 
+</footer>
+
+<script>
+function calculateDose() {
+  var triveni = Number(document.getElementById("triveni").value);
+  var simha = Number(document.getElementById("simha").value);
+  var nanapala = document.getElementById("nanapala").value;
+  var sooorya = document.getElementById("sooorya").value;
+  var form = document.getElementById("form").value;
+  var saleena = Number(document.getElementById("saleena").value);
+  var poornima = Number(document.getElementById("poornima").value);
+
+  if (!triveni || !simha) {
+    document.getElementById("ramya").innerHTML = "wing wing the weight or age not filled";
+    return;
+  }
+
+  var base = 10;
+  switch(nanapala) {
+    case 'pain': base = 12; break;
+    case 'antibiotic': base = 8; break;
+    case 'heart': base = 5; break;
+    case 'asthma': base = 7; break;
+  }
+
+  var dose = Math.round(triveni * base * saleena * poornima);
+
+  document.getElementById("ramya").innerHTML = 
+    "Daily Dose: <b>" + dose + " " + sooorya + "</b> (" + form + ") 💊<br>" +
+    "<small>!!This is not a real medical advice!!</small>";
+}
+</script>
+
+</body>
+</html>
